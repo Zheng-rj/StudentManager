@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+</head>
+<link rel="stylesheet" href="css/SignUp.css" />
+<script type="text/javascript" src="JS/jquery-3.3.1.js"></script>
+
+<script>
+    function HeadImage() {
+        document.getElementById("file").click();
+    }
+    //页面加载为 img添加事件,用于图片预览
+    $(function() {
+        $(":input[type='file']").change(function() {
+            var readFile = new FileReader();
+            var mfile = $(":input[type='file']")[0].files[0];  //注意这里必须时$("#myfile")[0]，document.getElementById('file')等价与$("#myfile")[0]
+            var f = $(":input[type='file']").val();
+            //判断长传文件的后缀名 是否是一张符合格式的图片
+            if(!/\.(jpg|jpeg|png|JPG|PNG)$/.test(f))
+            {
+                alert("图片类型必须是jpeg,jpg,png中的一种")
+                return false;
+            }
+            readFile.readAsDataURL(mfile);
+            readFile.onload = function() {
+                var img = $(".img");
+                //img.attr("width","48px");
+                //img.attr("height","48px");
+                //img.attr("border-radius","24px");
+                img.attr("src", this.result);
+            }
+        });
+    });
+</script>
+<body>
+    <div id="top">
+        <span>学生信息管理系统</span>
+        <!--<ul>-->
+        <!--<li>首页</li>-->
+        <!--<li>简介</li>-->
+        <!--<li></li>-->
+        <!--<li></li>-->
+        <!--</ul>-->
+        <ul class="circle">
+            <li onclick="window.open('Login.html','_self')" id="top1">首页</li>
+            <li onclick="window.open()" id="top2">简介</li>
+            <li onclick="window.open('SignUp.html','_self')" id="top3">注册</li>
+        </ul>
+    </div>
+    <div class="main">
+        <div class="login">
+            <form action="SignUp" method="post" enctype="multipart/form-data">
+                <table>
+                    <tr>
+                        <td id="r1c1">
+                            <span>注册</span>
+                        </td>
+                        <td id="r1c2">
+                            <a href="Login.html">已有账号,前去登录</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="r2c1">
+                            <input type="text" placeholder="用户名" name="uname">
+                        </td>
+                        <td id="r2c2">
+                            <input type="file" name="uimg" value="选择头像" id="file" style="display: none;">
+                            <img src="img/none.jpg" onclick="HeadImage()" class="img">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="r3c1">
+                            <input type="text" placeholder="手机号" name="uphone">
+                        </td>
+                        <td id="r3c2">
+                            <input type="radio" name="usex" value="man" id="man">
+                            <label for="man">男</label>
+                            <input type="radio" name="usex" value="woman" id="woman">
+                            <label for="woman">女</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="r4c1">
+                            <input type="password" placeholder="密码" name="upwd">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="r5c1">
+                            <input type="password" placeholder="确认密码" name="upasswordConfirm">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" id="r6c1">
+                            <input type="submit" value="注册">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

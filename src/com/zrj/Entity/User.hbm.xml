@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	在实体类的所在包下,创建一个xml文件,文件名称规范为:实体类名称.hbm(hibernateMapping)
+	导入约束:dtd约束
+ -->
+ 
+ <!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping package="com.zrj.Entity">
+    	<class name="User" table="User" >
+    		<id name="uid" column="uid"></id>
+    		<property name="uname" column="uname"></property>
+    		<property name="uimg" column="uimg"></property>
+    		<property name="uphone" column="uphone"></property>
+    		<property name="usex" column="usex"></property>
+    		<property name="upwd" column="upwd"></property>
+    	</class>
+    </hibernate-mapping>

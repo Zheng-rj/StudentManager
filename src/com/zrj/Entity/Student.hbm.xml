@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping package="com.zrj.Entity">
+	<class name="Student" table="Student">
+		<id name="sid" column="sid"></id>
+		<property name="sname" column="sname"></property>
+		<property name="ssex" column="ssex"></property>
+		<property name="sphone" column="sphone"></property>
+		<property name="smajor" column="smajor"></property>
+	</class>
+</hibernate-mapping>

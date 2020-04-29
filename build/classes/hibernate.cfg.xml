@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 在实体类的所在包下,创建一个xml文件,文件名称规范为:实体类名称.cfg(configuration) 导入约束:dtd约束 -->
+ 
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<!-- 配置SessionFactory SessionFactory的作用就是创建Session对象的 Session对象:hibernate中操作数据库的对象 
+		第一部分: 连接数据库的信息 第二部分: hibernate的可选信息 第三部分: 映射文件的位置 -->
+	<session-factory>
+		<!-- 连接数据库的基本参数 -->
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/jspproject02</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">rootadmin</property>
+		<!-- 配置Hibernate的方言 -->
+		<!-- 用于区分数据库的类型 -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<!-- 可选配置================ -->
+		<!-- 打印SQL -->
+		<property name="hibernate.show_sql">true</property>
+		<!-- 格式化SQL -->
+		<property name="hibernate.format_sql">true</property>
+		<!-- 自动创建表 -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+
+		<!-- session和线程绑定 -->
+		<property name="hibernate.current_session_context_class">thread</property>
+
+		<!-- 配置hibernate映射配置文件位置 -->
+		<mapping resource="com/zrj/Entity/Student.hbm.xml" />
+		<mapping resource="com/zrj/Entity/User.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>
